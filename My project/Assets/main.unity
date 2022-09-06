@@ -5827,6 +5827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151954521}
   - component: {fileID: 1151954520}
+  - component: {fileID: 1151954522}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -5862,6 +5863,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1151954522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151954519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c281bb5529dc2a746ab9b332b1be29e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactiveMap: {fileID: 1835177784}
+  pathMap: {fileID: 1835177784}
+  hoverTile: {fileID: 11400000, guid: 797cf861ba7a6ef48aa9ceb082257098, type: 2}
+  pathTile: {fileID: 0}
 --- !u!1 &1165517000
 GameObject:
   m_ObjectHideFlags: 0
