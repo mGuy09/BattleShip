@@ -1,6 +1,8 @@
-﻿namespace Battleship.Model;
-
-public enum ShipType
+﻿namespace Battleship.Model
 {
-    
+    public enum ShipType
+    {
+        
+    }
 }
+

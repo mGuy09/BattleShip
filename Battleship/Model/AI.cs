@@ -1,6 +1,8 @@
-﻿namespace Battleship.Model;
-
-public class AI
+﻿namespace Battleship.Model
 {
-    
+    public class AI
+    {
+        
+    }
 }
+

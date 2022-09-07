@@ -1,6 +1,9 @@
-﻿namespace Battleship.Model;
-
-public class Player
+﻿namespace Battleship.Model
 {
-    
+    public class Player
+    {
+        
+    }
 }
+
+    
