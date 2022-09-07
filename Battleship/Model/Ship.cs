@@ -2,6 +2,7 @@
 {
     public class Ship
     {
+        
         public List<Square> ShipList;
     }
 }

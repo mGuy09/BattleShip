@@ -9,7 +9,9 @@ namespace Battleship.Controller
         public int? Turns = null;
         public Board board1 = new Board();
         public Board board2 = new Board();
-        
+        public static Player player1 = new Player();
+        public static Player player2 = new Player();
+        public static Player currentPlayer = player2;
 
         public void Start()
         {
@@ -17,15 +19,16 @@ namespace Battleship.Controller
             Display.ShowText(Messages.Welcome);
             Display.ShowText(MainMenu.menu);
             int option = Input.GetInput();
+            
             switch (option)
             {
                 case 1:
                     Display.Clear();
-                    Display.ShowBoard(board1.ToString());
-
-                    break;
+                    PlacingPhase();
+                   break;
                 case 2:
                     Display.Clear();
+                    PlacingPhase();
                     break;
                 case 3:
                 settingslabel:
@@ -77,6 +80,49 @@ namespace Battleship.Controller
                     Environment.Exit(0);
                     break;
             }
+        }
+
+        public void PlacingPhase()
+        {
+            board1.CreateBoard();
+            board2.CreateBoard();
+            Display.ShowText(Messages.PlacingPhase);
+            currentPlayer = currentPlayer == player2 ? player1 : player2;
+            if (currentPlayer == player1)
+            {
+                Display.ShowText(MainMenu.PlacingType);
+                switch (Input.GetInput())
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        Display.ShowText(Errors.invalidInput);
+                        break;
+                }
+                Display.ShowText(currentPlayer.ToString());
+                Display.ShowBoard(board1.ToString());
+                Display.ShowText(MainMenu.ChooseShip);
+                switch (Input.GetCoordinates(Board.Size))
+                {
+                    case 1:
+
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Display.ShowText(Errors.invalidInput);
+                        break;
+                }
+            }
+            
         }
 
     }
