@@ -1,6 +1,8 @@
-﻿namespace Battleship.Model;
-
-public class BoardFactory
+﻿namespace Battleship.Model
 {
-    
+    public class BoardFactory
+    {
+        
+    }
 }
+

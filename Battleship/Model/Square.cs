@@ -1,6 +1,8 @@
-﻿namespace Battleship.Model;
-
-public class Square
+﻿namespace Battleship.Model
 {
-    
+    public class Square
+    {
+
+    }
 }
+

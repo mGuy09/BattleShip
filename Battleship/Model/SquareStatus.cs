@@ -1,6 +1,8 @@
-﻿namespace Battleship.Model;
-
-public enum SquareStatus
+﻿namespace Battleship.Model
 {
-    
+    public enum SquareStatus
+    {
+
+    }
 }
+
