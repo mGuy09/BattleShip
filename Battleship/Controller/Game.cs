@@ -1,13 +1,15 @@
 ﻿using Battleship.Misc;
+using Battleship.Model;
 using Battleship.View;
 
 namespace Battleship.Controller
 {
     public class Game
     {
-        public int Size = 15;
         public int? Turns = null;
-
+        public Board board1 = new Board();
+        public Board board2 = new Board();
+        
 
         public void Start()
         {
@@ -35,13 +37,13 @@ namespace Battleship.Controller
                             switch (Input.GetInput())
                             {
                                 case 1:
-                                    Size = 15;
+                                    Board.Size = 15;
                                     break;
                                 case 2:
-                                    Size = 20;
+                                    Board.Size = 20;
                                     break;
                                 case 3:
-                                    Size = 25;
+                                    Board.Size = 25;
                                     break;
                                 case 4:
                                     goto settingslabel;
@@ -63,9 +65,7 @@ namespace Battleship.Controller
                                     break;
                                 case 4:
                                     goto settingslabel;
-
                             }
-
                             break;
                         case 3:
                             goto mainMenuLabel;
