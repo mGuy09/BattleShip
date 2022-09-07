@@ -125,5 +125,9 @@ namespace Battleship.Controller
             
         }
 
+        public void Round()
+        {
+
+        }
     }
 }
