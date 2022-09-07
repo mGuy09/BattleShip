@@ -2,7 +2,7 @@
 {
     public class Board
     {
-        public int Size { get; set; }
+        public static int Size { get; set; } = 15;
 
         public Square[,] ocean;
 
@@ -11,8 +11,10 @@
             return false;
         }
 
-
-
+        public void CreateBoard()
+        {
+            
+        }
     }
 }
     

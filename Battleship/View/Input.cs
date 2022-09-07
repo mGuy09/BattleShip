@@ -13,16 +13,17 @@ namespace Battleship.View
         {
             int option = 0;
         chooseOption:
-            string input = Console.ReadLine();
-            if (Regex.IsMatch(input, @"^\d+$"))
+            string? input = Console.ReadLine();
+            if (input != null && Regex.IsMatch(input, @"^\d+$"))
             {
-               option = Int16.Parse(input);
+               option = int.Parse(input);
                
             }
             else goto chooseOption;
             return option;
 
         }
-        
+
+        public static 
     }
 }

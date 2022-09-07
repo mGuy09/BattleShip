@@ -11,8 +11,8 @@ namespace Battleship
         {
             bool isGameon = true;
             Game game = new Game();
-            Display.ShowText(Messages.Welcome);
-            Display.ShowText(MainMenu.menu);
+            game.Start();
+            
 
         }
     }
