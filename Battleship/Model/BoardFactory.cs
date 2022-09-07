@@ -2,7 +2,15 @@
 {
     public class BoardFactory
     {
-        
+        public static void ManualBuilder()
+        {
+
+        }
+
+        public static void RandomBuilder()
+        {
+
+        }
     }
 }
 
