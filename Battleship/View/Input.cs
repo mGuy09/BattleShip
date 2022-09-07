@@ -8,5 +8,9 @@ namespace Battleship.View
 {
     internal class Input
     {
+        public static string? GetInput()
+        {
+            return Console.ReadLine();
+        }
     }
 }
