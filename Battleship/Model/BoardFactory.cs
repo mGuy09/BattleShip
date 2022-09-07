@@ -2,12 +2,12 @@
 {
     public class BoardFactory
     {
-        public static void ManualBuilder()
+        public static void ManualPlacement()
         {
 
         }
 
-        public static void RandomBuilder()
+        public static void RandomPLacement()
         {
 
         }

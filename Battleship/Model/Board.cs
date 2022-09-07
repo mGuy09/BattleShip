@@ -4,14 +4,12 @@
     {
         public int Size { get; set; }
 
-        private int[,] board;
+        public Square[,] ocean;
 
+        public bool IsPlacementOk()
+        {
 
-
-
-
-
-
+        }
     }
 }
     
