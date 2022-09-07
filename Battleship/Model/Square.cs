@@ -6,7 +6,6 @@ namespace Battleship.Model
     {
         public (int, int) Position { get; set; }
         public SquareStatus SquareStatus;
-
         public string ShowSquareStatus(SquareStatus status)
         {
             return status.ToString();

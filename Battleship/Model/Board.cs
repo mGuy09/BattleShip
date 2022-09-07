@@ -1,4 +1,6 @@
-﻿namespace Battleship.Model
+﻿using System.Globalization;
+
+namespace Battleship.Model
 {
     public class Board
     {
