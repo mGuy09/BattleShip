@@ -2,6 +2,10 @@
 {
     public enum SquareStatus
     {
+        Unknown,
+        Missed,
+        Hit,
+        Sunk,
 
     }
 }
