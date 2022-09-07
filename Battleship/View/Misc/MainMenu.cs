@@ -48,5 +48,12 @@ namespace Battleship.Misc
 
 1. Manual ship Placing
 2. Random ship Placing";
+
+
+        public const string Direction = @"Choose Direction:
+1. North
+2. East
+3. South
+4. West";
     }
 }

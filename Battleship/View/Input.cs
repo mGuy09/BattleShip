@@ -23,17 +23,18 @@ namespace Battleship.View
             return option;
 
         }
+
         public static (int, int) GetCoordinates(int size)
         {
-            (int, int) option = (0, 0); 
+            (int, int) option = (0, 0);
             chooseOption:
             string input = Console.ReadLine();
-            option.Item1 = int.Parse(input[0].ToString())-97;
-            option.Item2 = int.Parse(input[1].ToString())-1;
+            option.Item1 = int.Parse(input[0].ToString()) - 97;
+            option.Item2 = int.Parse(input[1].ToString()) - 1;
             if (option.Item1 < size && option.Item2 < size) return option;
             goto chooseOption;
-            
+
         }
-        
+
     }
 }

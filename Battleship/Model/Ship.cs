@@ -3,7 +3,7 @@
     public class Ship
     {
         
-        public List<Square> ShipList;
+        public List<Square> SquareList;
     }
 }
 

@@ -6,7 +6,7 @@ namespace Battleship.Controller
 {
     public class Game
     {
-        public int? Turns = null;
+        public int? Turns;
         public Board board1 = new Board();
         public Board board2 = new Board();
         public static Player player1 = new Player();
@@ -88,40 +88,27 @@ namespace Battleship.Controller
             board2.CreateBoard();
             Display.ShowText(Messages.PlacingPhase);
             currentPlayer = currentPlayer == player2 ? player1 : player2;
-            if (currentPlayer == player1)
-            {
-                Display.ShowText(MainMenu.PlacingType);
-                switch (Input.GetInput())
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        Display.ShowText(Errors.invalidInput);
-                        break;
-                }
-                Display.ShowText(currentPlayer.ToString());
-                Display.ShowBoard(board1.ToString());
-                Display.ShowText(MainMenu.ChooseShip);
-                switch (Input.GetCoordinates(Board.Size))
-                {
-                    case 1:
+            Board currentBoard;
+            if (currentPlayer == player1) currentBoard = board1;
+            else currentBoard = board2;
+            
 
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    default:
-                        Display.ShowText(Errors.invalidInput);
-                        break;
-                }
+            Display.ShowText(MainMenu.PlacingType);
+            switch (Input.GetInput())
+            {
+                case 1:
+                    BoardFactory.ManualPlacement(currentBoard, currentPlayer);
+                    break;
+                case 2:
+                    break;
+                default:
+                    Display.ShowText(Errors.invalidInput);
+                    break;
             }
+                //Display.ShowText(currentPlayer.ToString());
+                //Display.ShowBoard(board1.ToString());
+                
+            
             
         }
 

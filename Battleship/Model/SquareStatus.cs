@@ -2,7 +2,8 @@
 {
     public enum SquareStatus
     {
-        Unknown,
+        Empty,
+        Occupied,
         Missed,
         Hit,
         Sunk,

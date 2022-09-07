@@ -17,6 +17,8 @@ namespace Battleship.Model
 
         public Square[,] CreateBoard()
         {
+            Square[,] ocean = new Square[Size,Size];
+
             for (int i = 0; i < Size; i++)
             {
                 for (int j = 0; j < Size; j++)
