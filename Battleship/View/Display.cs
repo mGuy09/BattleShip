@@ -20,9 +20,9 @@ namespace Battleship.View
             Console.WriteLine(text);
         }
 
-        public static void ShowBoard(Board board)
+        public static void ShowBoard(string board)
         {
-            ShowText(board.ToString());
+            ShowText(board);
 
         }
         
