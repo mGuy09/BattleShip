@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Battleship.View
 {
-    internal class Display
+    public class Display
     {
         public static void Clear()
         {
