@@ -8,8 +8,11 @@
 
         public bool IsPlacementOk()
         {
-
+            return false;
         }
+
+
+
     }
 }
     

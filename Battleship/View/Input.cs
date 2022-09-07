@@ -23,5 +23,6 @@ namespace Battleship.View
             return option;
 
         }
+        
     }
 }
