@@ -24,6 +24,6 @@ namespace Battleship.View
 
         }
 
-        public static 
+        
     }
 }

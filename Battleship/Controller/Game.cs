@@ -21,6 +21,8 @@ namespace Battleship.Controller
             {
                 case 1:
                     Display.Clear();
+                    Display.ShowBoard(board1.ToString());
+
                     break;
                 case 2:
                     Display.Clear();
@@ -38,13 +40,13 @@ namespace Battleship.Controller
                             {
                                 case 1:
                                     Board.Size = 15;
-                                    break;
+                                    goto settingslabel;
                                 case 2:
                                     Board.Size = 20;
-                                    break;
+                                    goto settingslabel;
                                 case 3:
                                     Board.Size = 25;
-                                    break;
+                                    goto settingslabel;
                                 case 4:
                                     goto settingslabel;
                             }
@@ -56,13 +58,13 @@ namespace Battleship.Controller
                             {
                                 case 1:
                                     Turns = 5;
-                                    break;
+                                    goto settingslabel;
                                 case 2:
                                     Turns = 10;
-                                    break;
+                                    goto settingslabel;
                                 case 3:
                                     Turns = null;
-                                    break;
+                                    goto settingslabel;
                                 case 4:
                                     goto settingslabel;
                             }

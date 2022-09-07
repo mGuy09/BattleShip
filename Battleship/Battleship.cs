@@ -7,7 +7,7 @@ namespace Battleship
     public class Battleship
     {
 
-        public void Main()
+        public static void Main()
         {
             bool isGameon = true;
             Game game = new Game();
