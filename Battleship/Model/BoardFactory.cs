@@ -8,6 +8,7 @@ namespace Battleship.Model
         public static void ManualPlacement(Board board, Player player)
         {
             int shipSize = 0;
+
             Display.ShowText(MainMenu.ChooseShip);
             switch (Input.GetInput())
             {

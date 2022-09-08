@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
+using System.Drawing;
 
 namespace Battleship.Model
 {

@@ -12,6 +12,7 @@ namespace Battleship.Controller
         public static Player player1 = new Player();
         public static Player player2 = new Player();
         public static Player currentPlayer = player2;
+        public static AI ai = new AI();
 
         public void Start()
         {
@@ -24,11 +25,11 @@ namespace Battleship.Controller
             {
                 case 1:
                     Display.Clear();
-                    PlacingPhase();
+                    PlacingPhase(player1);
                    break;
                 case 2:
                     Display.Clear();
-                    PlacingPhase();
+                    PlacingPhase(ai);
                     break;
                 case 3:
                 settingslabel:
@@ -94,7 +95,7 @@ namespace Battleship.Controller
             }
         }
 
-        public void PlacingPhase()
+        public void PlacingPhase(Player? player)
         {
             board1.CreateBoard();
             board2.CreateBoard();
