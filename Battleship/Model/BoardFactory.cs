@@ -7,7 +7,7 @@ namespace Battleship.Model
     {
         public static void ManualPlacement(Board board, Player player)
         {
-            while (player.Ships.Count <= 5)
+            while (player.Ships.Count <= 4)
             {
                 int shipSize = 0;
                 Display.Clear();
@@ -50,6 +50,7 @@ namespace Battleship.Model
                             {
 
                                 ship.SquareList.Add(board.ocean[coordinates.Item1 - i, coordinates.Item2]);
+
                                 board.ocean[coordinates.Item1 - i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);

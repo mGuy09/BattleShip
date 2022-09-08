@@ -12,4 +12,5 @@ public static class Messages
     public const string HitMessage1 = "Player 1 hit a ship";
     public const string HitMessage2 = "Player 2 hit a ship";
     public const string MissedMessage = "Missed the hidden ship";
+    public const string ChooseCoordinates = "choose coordinates:";
 }
