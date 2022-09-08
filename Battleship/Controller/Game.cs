@@ -133,6 +133,7 @@ namespace Battleship.Controller
             else currentBoard = board1;
             Display.ShowBoard(currentBoard.ToString(true));
             Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1 : Messages.ShootingPhase2);
+
             currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
             currentPlayer.SinkShip(currentBoard);
             Display.Clear();
