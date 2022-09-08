@@ -10,6 +10,8 @@ namespace Battleship.Model
             while (player.Ships.Count <= 5)
             {
                 int shipSize = 0;
+                Display.Clear();
+                Display.ShowBoard(board.ToString());
                 Display.ShowText(MainMenu.ChooseShip);
                 switch (Input.GetInput())
                 {
@@ -100,6 +102,7 @@ namespace Battleship.Model
                         }
                         break;
                     default:
+                        Display.Clear();
                         Display.ShowText(Errors.invalidInput);
                         break;
                 }

@@ -14,6 +14,7 @@ namespace Battleship
             bool isGameon = true;
             Game game = new Game();
             game.Start();
+            game.Round();
             
 
         }

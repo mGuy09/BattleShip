@@ -1,4 +1,5 @@
-﻿using Battleship.Misc;
+﻿using System.Runtime.InteropServices;
+using Battleship.Misc;
 using Battleship.Model;
 using Battleship.View;
 
@@ -104,11 +105,9 @@ namespace Battleship.Controller
         {
             board1.CreateBoard();
             board2.CreateBoard();
-            Display.ShowText(Messages.PlacingPhase);
-            Board currentBoard;
-            if (currentPlayer == player1) currentBoard = board1;
-            else currentBoard = board2;
-            
+            Display.ShowText(currentPlayer == player1 ? Messages.PlacingPhase1: Messages.PlacingPhase2);
+            Board currentBoard = currentPlayer == player1 ? board1 : board2;
+
 
             Display.ShowText(MainMenu.PlacingType);
             switch (Input.GetInput())
@@ -132,7 +131,10 @@ namespace Battleship.Controller
 
         public void Round()
         {
-
+            currentPlayer = currentPlayer == player1 ? player2 : player1;
+            Board currentBoard = currentPlayer == player1 ? board2 : board1;
+            Display.ShowBoard(currentBoard.ToString(true));
+            Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1:Messages.ShootingPhase2);
         }
     }
 }
