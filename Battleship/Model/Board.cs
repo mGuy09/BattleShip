@@ -32,7 +32,7 @@ namespace Battleship.Model
             return ocean;
         }
 
-        public override string ToString()
+        public string ToString(bool isConcealed)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -57,39 +57,23 @@ namespace Battleship.Model
                 sb.Append($"{x}");
                 for (int i = 0; i < Size; i++)
                 {
+                    if (isConcealed)
+                    {
+                        if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty ||
+                            ocean[x - 65, i].SquareStatus == SquareStatus.Occupied)
+                            sb.Append("  .");
+                        else
+                        {
+                            if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty) sb.Append("  .");
+                            else if (ocean[x - 65, i].SquareStatus == SquareStatus.Occupied) sb.Append("  █");
+                        }
+                    }
 
-                    
-                    if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty)
-                    {
-                        
-                        sb.Append("  .");
-                        
-                    }
-                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Occupied)
-                    {
-                        
-                        sb.Append("  █");
-                        
-                    }
-                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Hit)
-                    {
-                        
-                        sb.Append("  H");
-                        
-                    }
-                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Missed)
-                    {
-                        
-                        sb.Append("  M");
-                        
-                    }
-                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Sunk)
-                    {
-                        
-                        sb.Append("  S");
-                        
-                    }
-                    
+                    if (ocean[x - 65, i].SquareStatus == SquareStatus.Hit) sb.Append("  H");
+
+                    else if (ocean[x - 65, i].SquareStatus == SquareStatus.Missed) sb.Append("  M");
+
+                    else if (ocean[x - 65, i].SquareStatus == SquareStatus.Sunk) sb.Append("  S");
                 }
                 sb.Append("\n");
             }
