@@ -121,25 +121,11 @@ namespace Battleship.Controller
                     Display.ShowText(Errors.invalidInput);
                     break;
             }
-            //Display.ShowText(currentPlayer.ToString());
-            //Display.ShowBoard(board1.ToString());
-
-
+            
 
         }
 
-        //public Player ChangePlayer(Player player1, Player player2)
-        //{
-        //    if (currentPlayer == player2)
-        //    {
-        //        currentPlayer = player1;
-        //    }
-        //    else
-        //    {
-        //        currentPlayer = player2;
-        //    }
-        //    return currentPlayer;
-        //}
+        
 
         public void Round()
         {
