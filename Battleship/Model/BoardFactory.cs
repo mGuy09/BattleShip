@@ -53,7 +53,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1 - i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-                            board.Places.Add(ship.SquareList);
+                            
 
                         }
                         break;
@@ -69,7 +69,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1, coordinates.Item2 + i].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-                            board.Places.Add(ship.SquareList);
+                            
                         }
                         break;
                     case 3:
@@ -84,7 +84,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1 + i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-                            board.Places.Add(ship.SquareList);
+                            
                         }
                         break;
                     case 4:
@@ -99,7 +99,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1, coordinates.Item2 - i].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-                            board.Places.Add(ship.SquareList);
+                            
                         }
                         break;
                     default:

@@ -9,28 +9,30 @@ namespace Battleship.Controller
     public class Game
     {
         public int? Turns;
-        public Board board1 = new();
-        public Board board2 = new();
+        public static Board board1 = new(1);
+        public static Board board2 = new(2);
         public static Player player1 = new(1);
         public static Player player2 = new(2);
         public Player currentPlayer = player2;
+        public Board currentBoard = board2;
         public void Start()
         {
         mainMenuLabel:
             Display.ShowText(Messages.Welcome);
             Display.ShowText(MainMenu.menu);
             int option = Input.GetInput();
-
+            board1.Id = player1.Id;
+            board2.Id = player2.Id;
             switch (option)
             {
                 case 1:
                     Display.Clear();
-                    PlacingPhase(player1);
-                    PlacingPhase(player2);
+                    PlacingPhase(player1, board1);
+                    PlacingPhase(player2, board2);
                     break;
                 case 2:
                     Display.Clear();
-                    PlacingPhase(player1);
+                    PlacingPhase(player1, board1);
                     //PlacingPhase(ai);
                     break;
                 case 3:
@@ -101,22 +103,18 @@ namespace Battleship.Controller
             }
         }
 
-        public void PlacingPhase(Player currentPlayer)
+        public void PlacingPhase(Player currentPlayer, Board board)
         {
-            board1.CreateBoard();
-            board2.CreateBoard();
+            board.CreateBoard();
             Display.ShowText(currentPlayer == player1 ? Messages.PlacingPhase1 : Messages.PlacingPhase2);
-            Board currentBoard = currentPlayer == player1 ? board1 : board2;
-
-
             Display.ShowText(MainMenu.PlacingType);
             switch (Input.GetInput())
             {
                 case 1:
-                    BoardFactory.ManualPlacement(currentBoard, currentPlayer);
+                    BoardFactory.ManualPlacement(board, currentPlayer);
                     break;
                 case 2:
-                    BoardFactory.RandomPLacement(currentBoard, currentPlayer);
+                    BoardFactory.RandomPLacement(board, currentPlayer);
                     break;
                 default:
                     Display.ShowText(Errors.invalidInput);
@@ -125,43 +123,29 @@ namespace Battleship.Controller
             //Display.ShowText(currentPlayer.ToString());
             //Display.ShowBoard(board1.ToString());
 
-
-
-        }
-
-        public Player ChangePlayer(Player player1, Player player2)
-        {
-            if (currentPlayer == player2)
-            {
-                currentPlayer = player1;
-            }
-            else
-            {
-                currentPlayer = player2;
-            }
-            return currentPlayer;
         }
 
         public void Round()
         {
             Display.Clear();
             currentPlayer = currentPlayer == player2 ? player1 : player2;
-            Board currentBoard = currentPlayer == player1 ? board2 : board1;
+            if (currentPlayer == player1) currentBoard = board2;
+            else currentBoard = board1;
             Display.ShowBoard(currentBoard.ToString(true));
             Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1 : Messages.ShootingPhase2);
             currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
             currentPlayer.SinkShip(currentBoard);
             Display.Clear();
             Display.ShowBoard(currentBoard.ToString(true));
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
         }
 
         public bool IsWinning()
         {
             if (currentPlayer.IsAlive == false)
             {
-                if(currentPlayer == player2) Display.ShowText(Messages.Player2Wins);
-                else Display.ShowText(Messages.Player1Wins);
+                if(currentPlayer == player2) Display.ShowText(Messages.Player1Wins);
+                else Display.ShowText(Messages.Player2Wins);
                 return true;
             }
             return false;

@@ -6,10 +6,14 @@ namespace Battleship.Model
     public class Board
     {
         public static int Size { get; set; } = 15;
-
+        public int Id { get; set; }
         public Square[,] ocean;
         public List<List<Square>> Places = new List<List<Square>>();
 
+        public Board(int id)
+        {
+            Id = Id;
+        }
         public bool IsPlacementOk()
         {
             return false;
