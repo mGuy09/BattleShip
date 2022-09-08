@@ -93,7 +93,7 @@ namespace Battleship.Controller
                     break;
                 case 5:
                     board1.CreateBoard();
-                    Display.ShowBoard(board1.ToString());
+                    Display.ShowBoard(board1.ToString(false));
                     break;
                 default:
                     Display.ShowText(Errors.invalidInput);
@@ -131,10 +131,23 @@ namespace Battleship.Controller
 
         public void Round()
         {
-            currentPlayer = currentPlayer == player1 ? player2 : player1;
+            currentPlayer = currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
             Board currentBoard = currentPlayer == player1 ? board2 : board1;
             Display.ShowBoard(currentBoard.ToString(true));
             Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1:Messages.ShootingPhase2);
+            currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
+            currentPlayer.SinkShip();
+        }
+
+        public bool IsWinning()
+        {
+            currentPlayer = currentPlayer == player1 ? player2 : player1;
+            if (!currentPlayer.IsAlive)
+            {
+                return true;
+            }
+            return false;
+            
         }
     }
 }

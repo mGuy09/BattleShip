@@ -25,7 +25,7 @@
         {
             foreach (var ship in Ships)
             {
-                if (ship.SquareList.All(x => x.SquareStatus == SquareStatus.Sunk))
+                if (ship.SunkState())
                 {
                     Ships.Remove(ship);
                 }
