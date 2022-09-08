@@ -42,6 +42,7 @@ namespace Battleship.Model
                         ship.SquareList = new List<Square>(shipSize);
                         for (int i = 0; i < shipSize; i++)
                         {
+                            
                             ship.SquareList.Add(board.ocean[coordinates.Item1 - i, coordinates.Item2]);
                             board.ocean[coordinates.Item1 - i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                         }
@@ -57,6 +58,7 @@ namespace Battleship.Model
                         ship.SquareList = new List<Square>(shipSize);
                         for (int i = 0; i < shipSize; i++)
                         {
+                            
                             ship.SquareList.Add(board.ocean[coordinates.Item1 , coordinates.Item2 + i]);
                             board.ocean[coordinates.Item1, coordinates.Item2 + i].SquareStatus = SquareStatus.Occupied;
                         }
@@ -72,6 +74,7 @@ namespace Battleship.Model
                         ship.SquareList = new List<Square>(shipSize);
                         for (int i = 0; i < shipSize; i++)
                         {
+                            
                             ship.SquareList.Add(board.ocean[coordinates.Item1 + i, coordinates.Item2]);
                             board.ocean[coordinates.Item1 + i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                         }
@@ -87,6 +90,7 @@ namespace Battleship.Model
                         ship.SquareList = new List<Square>(shipSize);
                         for (int i = 0; i < shipSize; i++)
                         {
+                            
                             ship.SquareList.Add(board.ocean[coordinates.Item1, coordinates.Item2 - i]);
                             board.ocean[coordinates.Item1, coordinates.Item2 - i].SquareStatus = SquareStatus.Occupied;
                         }
@@ -116,7 +120,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i - k, j].SquareStatus == SquareStatus.Empty) isEmpty = true;
+                    if (board.ocean[i - k, j].SquareStatus == SquareStatus.Empty && i - k > Board.Size) isEmpty = true;
                     else isEmpty = false;
                 }
             }
@@ -124,7 +128,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i, j + k].SquareStatus == SquareStatus.Empty) isEmpty = true;
+                    if (board.ocean[i, j + k].SquareStatus == SquareStatus.Empty && j + k < Board.Size) isEmpty = true;
                     else isEmpty = false;
                 }
             }

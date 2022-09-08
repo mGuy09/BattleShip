@@ -52,6 +52,9 @@ namespace Battleship.Controller
                                     goto settingslabel;
                                 case 4:
                                     goto settingslabel;
+                                default:
+                                    Display.ShowText(Errors.invalidInput);
+                                    break;
                             }
                             break;
                         case 2:
@@ -70,14 +73,23 @@ namespace Battleship.Controller
                                     goto settingslabel;
                                 case 4:
                                     goto settingslabel;
+                                default:
+                                    Display.ShowText(Errors.invalidInput);
+                                    break;
                             }
                             break;
                         case 3:
                             goto mainMenuLabel;
+                        default:
+                            Display.ShowText(Errors.invalidInput);
+                            break;
                     }
                     break;
                 case 4:
                     Environment.Exit(0);
+                    break;
+                default:
+                    Display.ShowText(Errors.invalidInput);
                     break;
             }
         }
@@ -100,6 +112,7 @@ namespace Battleship.Controller
                     BoardFactory.ManualPlacement(currentBoard, currentPlayer);
                     break;
                 case 2:
+                    BoardFactory.RandomPLacement(currentBoard, currentPlayer);
                     break;
                 default:
                     Display.ShowText(Errors.invalidInput);
