@@ -144,14 +144,16 @@ namespace Battleship.Controller
 
         public void Round()
         {
-            currentPlayer = ChangePlayer(player1, player2);
+            Display.Clear();
+            currentPlayer = currentPlayer == player2 ? player1 : player2;
             Board currentBoard = currentPlayer == player1 ? board2 : board1;
             Display.ShowBoard(currentBoard.ToString(true));
             Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1 : Messages.ShootingPhase2);
-            (int, int) coords = Input.GetCoordinates(Board.Size);
-            currentPlayer.Shoot(currentBoard, coords);
+            currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
             currentPlayer.SinkShip(currentBoard);
-           
+            Display.Clear();
+            Display.ShowBoard(currentBoard.ToString(true));
+            Thread.Sleep(5000);
         }
 
         public bool IsWinning()
