@@ -9,20 +9,19 @@ namespace Battleship.Controller
     public class Game
     {
         public int? Turns;
-        public static Board board1 = new(1);
-        public static Board board2 = new(2);
+        public static Board board1 = new(0);
+        public static Board board2 = new(1);
         public static Player player1 = new(1);
         public static Player player2 = new(2);
         public Player currentPlayer = player2;
-        public Board currentBoard = board2;
+        public  static Board currentBoard = board2;
         public void Start()
         {
         mainMenuLabel:
             Display.ShowText(Messages.Welcome);
             Display.ShowText(MainMenu.menu);
             int option = Input.GetInput();
-            board1.Id = player1.Id;
-            board2.Id = player2.Id;
+
             switch (option)
             {
                 case 1:
@@ -107,6 +106,8 @@ namespace Battleship.Controller
         {
             board.CreateBoard();
             Display.ShowText(currentPlayer == player1 ? Messages.PlacingPhase1 : Messages.PlacingPhase2);
+
+
             Display.ShowText(MainMenu.PlacingType);
             switch (Input.GetInput())
             {
@@ -123,30 +124,56 @@ namespace Battleship.Controller
             //Display.ShowText(currentPlayer.ToString());
             //Display.ShowBoard(board1.ToString());
 
+
+
         }
+
+        //public Player ChangePlayer(Player player1, Player player2)
+        //{
+        //    if (currentPlayer == player2)
+        //    {
+        //        currentPlayer = player1;
+        //    }
+        //    else
+        //    {
+        //        currentPlayer = player2;
+        //    }
+        //    return currentPlayer;
+        //}
 
         public void Round()
         {
             Display.Clear();
             currentPlayer = currentPlayer == player2 ? player1 : player2;
-            if (currentPlayer == player1) currentBoard = board2;
-            else currentBoard = board1;
+            currentBoard = currentPlayer == player1 ? board2 : board1;
             Display.ShowBoard(currentBoard.ToString(true));
             Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1 : Messages.ShootingPhase2);
-
-            currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
-            currentPlayer.SinkShip(currentBoard);
-            Display.Clear();
+            if (currentBoard == board2)
+            {
+                player2.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
+                Display.Clear();
+                player2.SinkShip(currentBoard);
+            }
+            else
+            {
+                player1.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
+                Display.Clear();
+                player1.SinkShip(currentBoard);
+            }
             Display.ShowBoard(currentBoard.ToString(true));
-            Thread.Sleep(3000);
+            Thread.Sleep(1500);
         }
 
         public bool IsWinning()
         {
-            if (currentPlayer.IsAlive == false)
+            if (player1.IsAlive == false)
             {
-                if(currentPlayer == player2) Display.ShowText(Messages.Player1Wins);
-                else Display.ShowText(Messages.Player2Wins);
+                Display.ShowText(Messages.Player2Wins);
+                return true;
+            }
+            else if(player2.IsAlive == false)
+            {
+                Display.ShowText(Messages.Player1Wins);
                 return true;
             }
             return false;

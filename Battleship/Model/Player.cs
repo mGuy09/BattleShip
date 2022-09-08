@@ -53,7 +53,7 @@
                 }
             }
 
-            Ships.Remove(toBeDeletedShip);
+            if(toBeDeletedShip is not null)Ships.Remove(toBeDeletedShip);
         }
     }
 }
