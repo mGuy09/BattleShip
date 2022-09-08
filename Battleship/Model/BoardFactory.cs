@@ -53,6 +53,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1 - i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
+                            board.Places.Add(ship.SquareList);
 
                         }
                         break;
@@ -68,7 +69,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1, coordinates.Item2 + i].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-
+                            board.Places.Add(ship.SquareList);
                         }
                         break;
                     case 3:
@@ -83,7 +84,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1 + i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-
+                            board.Places.Add(ship.SquareList);
                         }
                         break;
                     case 4:
@@ -98,7 +99,7 @@ namespace Battleship.Model
                                 board.ocean[coordinates.Item1, coordinates.Item2 - i].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
-
+                            board.Places.Add(ship.SquareList);
                         }
                         break;
                     default:
@@ -141,11 +142,11 @@ namespace Battleship.Model
                     else return false;
                 }
             }
-            else if(board.ocean[i, j].SquareStatus == SquareStatus.Empty && direction == 4)
+            else if (board.ocean[i, j].SquareStatus == SquareStatus.Empty && direction == 4)
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i, j - k].SquareStatus == SquareStatus.Empty && j- k > 0) isEmpty = true;
+                    if (board.ocean[i, j - k].SquareStatus == SquareStatus.Empty && j - k > 0) isEmpty = true;
                     else return false;
                 }
             }
@@ -155,4 +156,3 @@ namespace Battleship.Model
     }
 
 }
-

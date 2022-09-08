@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Linq;
+using System.Runtime.InteropServices;
 using Battleship.Misc;
 using Battleship.Model;
 using Battleship.View;
@@ -8,10 +9,10 @@ namespace Battleship.Controller
     public class Game
     {
         public int? Turns;
-        public Board board1 = new ();
-        public Board board2 = new ();
-        public static Player player1 = new ();
-        public static Player player2 = new ();
+        public Board board1 = new();
+        public Board board2 = new();
+        public static Player player1 = new(1);
+        public static Player player2 = new(2);
         public Player currentPlayer = player2;
         public void Start()
         {
@@ -19,7 +20,7 @@ namespace Battleship.Controller
             Display.ShowText(Messages.Welcome);
             Display.ShowText(MainMenu.menu);
             int option = Input.GetInput();
-            
+
             switch (option)
             {
                 case 1:
@@ -104,7 +105,7 @@ namespace Battleship.Controller
         {
             board1.CreateBoard();
             board2.CreateBoard();
-            Display.ShowText(currentPlayer == player1 ? Messages.PlacingPhase1: Messages.PlacingPhase2);
+            Display.ShowText(currentPlayer == player1 ? Messages.PlacingPhase1 : Messages.PlacingPhase2);
             Board currentBoard = currentPlayer == player1 ? board1 : board2;
 
 
@@ -121,37 +122,48 @@ namespace Battleship.Controller
                     Display.ShowText(Errors.invalidInput);
                     break;
             }
-                //Display.ShowText(currentPlayer.ToString());
-                //Display.ShowBoard(board1.ToString());
-                
-            
-            
+            //Display.ShowText(currentPlayer.ToString());
+            //Display.ShowBoard(board1.ToString());
+
+
+
         }
 
-        public Player ChangePlayer(Player player)
+        public Player ChangePlayer(Player player1, Player player2)
         {
-            return currentPlayer = player == player1 ? player2 : player1;
+            if (currentPlayer == player2)
+            {
+                currentPlayer = player1;
+            }
+            else
+            {
+                currentPlayer = player2;
+            }
+            return currentPlayer;
         }
 
         public void Round()
         {
-            currentPlayer = ChangePlayer(currentPlayer);
+            currentPlayer = ChangePlayer(player1, player2);
             Board currentBoard = currentPlayer == player1 ? board2 : board1;
             Display.ShowBoard(currentBoard.ToString(true));
-            Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1:Messages.ShootingPhase2);
-            currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
+            Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1 : Messages.ShootingPhase2);
+            (int, int) coords = Input.GetCoordinates(Board.Size);
+            currentPlayer.Shoot(currentBoard, coords);
             currentPlayer.SinkShip(currentBoard);
+           
         }
 
         public bool IsWinning()
         {
-            currentPlayer = currentPlayer == player1 ? player2 : player1;
             if (currentPlayer.IsAlive == false)
             {
+                if(currentPlayer == player2) Display.ShowText(Messages.Player2Wins);
+                else Display.ShowText(Messages.Player1Wins);
                 return true;
             }
             return false;
-            
+
         }
     }
 }

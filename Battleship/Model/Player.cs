@@ -7,9 +7,15 @@
         {
             get
             {
-                if (Ships.Count == 0) return false;
+                if (Ships.Count <= 0) return false;
                 return true;
             }
+        }
+        public int Id { get; set; }
+
+        public Player(int id)
+        {
+            Id = id;
         }
 
         public void Shoot(Board board, (int,int) coords)
@@ -24,6 +30,7 @@
                         if (square.Position == coords)
                         {
                             square.SquareStatus = SquareStatus.Hit;
+                            
                         }
                     }
                 }

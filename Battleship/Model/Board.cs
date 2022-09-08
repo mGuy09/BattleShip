@@ -8,6 +8,7 @@ namespace Battleship.Model
         public static int Size { get; set; } = 15;
 
         public Square[,] ocean;
+        public List<List<Square>> Places = new List<List<Square>>();
 
         public bool IsPlacementOk()
         {
@@ -16,7 +17,7 @@ namespace Battleship.Model
 
         public Square[,] CreateBoard()
         {
-            ocean = new Square[Size,Size];
+            ocean = new Square[Size, Size];
 
             for (int i = 0; i < Size; i++)
             {
@@ -46,7 +47,7 @@ namespace Battleship.Model
                 {
                     sb.Append($" {i}");
                 }
-                
+
             }
 
             sb.Append("\n");
@@ -69,7 +70,7 @@ namespace Battleship.Model
                         if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty) sb.Append("  .");
                         else if (ocean[x - 65, i].SquareStatus == SquareStatus.Occupied) sb.Append("  █");
                     }
-                    
+
 
                     if (ocean[x - 65, i].SquareStatus == SquareStatus.Hit) sb.Append("  H");
 
@@ -84,6 +85,5 @@ namespace Battleship.Model
         }
     }
 }
-    
 
 
