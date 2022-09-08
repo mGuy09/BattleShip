@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using System.Drawing;
+
 
 namespace Battleship.Model
 {
@@ -17,7 +17,7 @@ namespace Battleship.Model
 
         public Square[,] CreateBoard()
         {
-            Square[,] ocean = new Square[Size,Size];
+            ocean = new Square[Size,Size];
 
             for (int i = 0; i < Size; i++)
             {
@@ -25,13 +25,14 @@ namespace Battleship.Model
                 {
                     ocean[i, j] = new Square();
                     ocean[i, j].Position = (i, j);
+                    ocean[i, j].SquareStatus = SquareStatus.Empty;
                 }
             }
 
             return ocean;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -56,11 +57,38 @@ namespace Battleship.Model
                 sb.Append($"{x}");
                 for (int i = 0; i < Size; i++)
                 {
-                    if (ocean[x-97, i].SquareStatus == SquareStatus.Empty) sb.Append("  .");
-                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Occupied) sb.Append("  █");
-                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Hit) sb.Append("  █");
-                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Missed) sb.Append("  █");
-                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Sunk) sb.Append("  █");
+
+                    
+                    if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty)
+                    {
+                        
+                        sb.Append("  .");
+                        
+                    }
+                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Occupied)
+                    {
+                        
+                        sb.Append("  █");
+                        
+                    }
+                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Hit)
+                    {
+                        
+                        sb.Append("  H");
+                        
+                    }
+                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Missed)
+                    {
+                        
+                        sb.Append("  M");
+                        
+                    }
+                    else if (ocean[int.Parse(x.ToString()) - 97, i].SquareStatus == SquareStatus.Sunk)
+                    {
+                        
+                        sb.Append("  S");
+                        
+                    }
                     
                 }
                 sb.Append("\n");

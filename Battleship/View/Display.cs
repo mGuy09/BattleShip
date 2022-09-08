@@ -22,7 +22,10 @@ namespace Battleship.View
 
         public static void ShowBoard(string board)
         {
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.White;
             ShowText(board);
+            Console.ResetColor();
 
         }
         

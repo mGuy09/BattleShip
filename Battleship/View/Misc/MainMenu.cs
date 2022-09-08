@@ -14,7 +14,8 @@ namespace Battleship.Misc
 1. Player vs Player
 2. Player vs Computer
 3. Settings
-4. Exit";
+4. Exit
+5. Map Test Area";
 
         public const string settings = @"Settings:
 

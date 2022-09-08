@@ -90,6 +90,10 @@ namespace Battleship.Controller
                 case 4:
                     Environment.Exit(0);
                     break;
+                case 5:
+                    board1.CreateBoard();
+                    Display.ShowBoard(board1.ToString());
+                    break;
                 default:
                     Display.ShowText(Errors.invalidInput);
                     break;

@@ -1,6 +1,7 @@
 ﻿using Battleship.Controller;
 using Battleship.Misc;
 using Battleship.View;
+using System;
 
 namespace Battleship
 {
@@ -9,6 +10,7 @@ namespace Battleship
 
         public static void Main()
         {
+            
             bool isGameon = true;
             Game game = new Game();
             game.Start();
