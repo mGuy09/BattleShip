@@ -32,7 +32,7 @@ namespace Battleship.Model
                         Display.ShowText(Errors.invalidInput);
                         break;
                 }
-                Display.ShowText("Type the coordinates:");
+                Display.ShowText(Messages.ChooseCoordinates);
                 (int, int) coordinates = Input.GetCoordinates(Board.Size);
 
 
