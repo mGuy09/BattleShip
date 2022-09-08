@@ -56,8 +56,12 @@ namespace Battleship.Model
                 sb.Append($"{x}");
                 for (int i = 0; i < Size; i++)
                 {
+                    if (ocean[x-97, i].SquareStatus == SquareStatus.Empty) sb.Append("  .");
+                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Occupied) sb.Append("  █");
+                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Hit) sb.Append("  █");
+                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Missed) sb.Append("  █");
+                    else if (ocean[x - 97, i].SquareStatus == SquareStatus.Sunk) sb.Append("  █");
                     
-                        sb.Append("  .");
                 }
                 sb.Append("\n");
             }
