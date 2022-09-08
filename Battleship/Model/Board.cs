@@ -11,7 +11,6 @@ namespace Battleship.Model
 
         public bool IsPlacementOk()
         {
-
             return false;
         }
 

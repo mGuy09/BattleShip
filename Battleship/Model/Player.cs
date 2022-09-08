@@ -7,29 +7,46 @@
         {
             get
             {
-                if (Ships == null) return false;
+                if (Ships.Count == 0) return false;
                 return true;
             }
         }
 
         public void Shoot(Board board, (int,int) coords)
         {
-            if (board.ocean[coords.Item1, coords.Item2].SquareStatus == SquareStatus.Occupied) 
-                board.ocean[coords.Item1, coords.Item2].SquareStatus = SquareStatus.Hit;
-
-            else if (board.ocean[coords.Item1, coords.Item2].SquareStatus == SquareStatus.Empty)
-                board.ocean[coords.Item1, coords.Item2].SquareStatus = SquareStatus.Missed;
-        }
-
-        public void SinkShip()
-        {
-            foreach (var ship in Ships)
+            if (board.ocean[coords.Item1, coords.Item2].SquareStatus == SquareStatus.Occupied)
             {
-                if (ship.SunkState())
+                board.ocean[coords.Item1, coords.Item2].SquareStatus = SquareStatus.Hit;
+                foreach (var ship in Ships)
                 {
-                    Ships.Remove(ship);
+                    foreach (var square in ship.SquareList)
+                    {
+                        if (square.Position == coords)
+                        {
+                            square.SquareStatus = SquareStatus.Hit;
+                        }
+                    }
                 }
             }
+
+            else if (board.ocean[coords.Item1, coords.Item2].SquareStatus == SquareStatus.Empty)
+            {
+                board.ocean[coords.Item1, coords.Item2].SquareStatus = SquareStatus.Missed;
+            }
+        }
+
+        public void SinkShip(Board board)
+        {
+            Ship? toBeDeletedShip = null;
+            foreach (var ship in Ships)
+            {
+                if (ship.SunkState(board))
+                {
+                    toBeDeletedShip = ship;
+                }
+            }
+
+            Ships.Remove(toBeDeletedShip);
         }
     }
 }

@@ -7,6 +7,7 @@ public static class Messages
     public const string PlacingPhase2 = "Player 2, the Placing Phase begins!";
     public const string ShootingPhase1 = "Player 1, your turn to shoot";
     public const string ShootingPhase2 = "Player 2, your turn to shoot";
+    public const string ChooseCoordinates = "Type the coordinates:";
     public const string SunkMessage1 = "Player 1 sunk a ship";
     public const string SunkMessage2 = "Player 2 sunk a ship";
     public const string HitMessage1 = "Player 1 hit a ship";

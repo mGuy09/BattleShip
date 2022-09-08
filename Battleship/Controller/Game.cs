@@ -8,12 +8,11 @@ namespace Battleship.Controller
     public class Game
     {
         public int? Turns;
-        public Board board1 = new Board();
-        public Board board2 = new Board();
-        public static Player player1 = new Player();
-        public static Player player2 = new Player();
-        public static Player currentPlayer = player2;
-        public static AI ai = new AI();
+        public Board board1 = new ();
+        public Board board2 = new ();
+        public static Player player1 = new ();
+        public static Player player2 = new ();
+        public Player currentPlayer = player2;
         public void Start()
         {
         mainMenuLabel:
@@ -129,20 +128,25 @@ namespace Battleship.Controller
             
         }
 
+        public Player ChangePlayer(Player player)
+        {
+            return currentPlayer = player == player1 ? player2 : player1;
+        }
+
         public void Round()
         {
-            currentPlayer = currentPlayer == player1 ? currentPlayer = player2 : currentPlayer = player1;
+            currentPlayer = ChangePlayer(currentPlayer);
             Board currentBoard = currentPlayer == player1 ? board2 : board1;
             Display.ShowBoard(currentBoard.ToString(true));
             Display.ShowText(currentPlayer == player1 ? Messages.ShootingPhase1:Messages.ShootingPhase2);
             currentPlayer.Shoot(currentBoard, Input.GetCoordinates(Board.Size));
-            currentPlayer.SinkShip();
+            currentPlayer.SinkShip(currentBoard);
         }
 
         public bool IsWinning()
         {
             currentPlayer = currentPlayer == player1 ? player2 : player1;
-            if (!currentPlayer.IsAlive)
+            if (currentPlayer.IsAlive == false)
             {
                 return true;
             }
