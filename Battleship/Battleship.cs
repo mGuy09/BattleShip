@@ -1,7 +1,5 @@
 ﻿using Battleship.Controller;
-using Battleship.Misc;
-using Battleship.View;
-using System;
+
 
 namespace Battleship
 {
@@ -14,8 +12,16 @@ namespace Battleship
             bool isGameon = true;
             Game game = new Game();
             game.Start();
-            game.Round();
-            
+            while (isGameon)
+            {
+                game.Round();
+                if (game.IsWinning())
+                {
+                    isGameon = false;
+                }
+            }
+
+
 
         }
     }

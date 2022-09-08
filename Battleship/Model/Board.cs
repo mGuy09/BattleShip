@@ -11,7 +11,6 @@ namespace Battleship.Model
 
         public bool IsPlacementOk()
         {
-
             return false;
         }
 
@@ -61,13 +60,16 @@ namespace Battleship.Model
                     {
                         if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty ||
                             ocean[x - 65, i].SquareStatus == SquareStatus.Occupied)
-                            sb.Append("  .");
-                        else
                         {
-                            if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty) sb.Append("  .");
-                            else if (ocean[x - 65, i].SquareStatus == SquareStatus.Occupied) sb.Append("  █");
+                            sb.Append("  .");
                         }
                     }
+                    else
+                    {
+                        if (ocean[x - 'A', i].SquareStatus == SquareStatus.Empty) sb.Append("  .");
+                        else if (ocean[x - 65, i].SquareStatus == SquareStatus.Occupied) sb.Append("  █");
+                    }
+                    
 
                     if (ocean[x - 65, i].SquareStatus == SquareStatus.Hit) sb.Append("  H");
 

@@ -7,11 +7,11 @@ namespace Battleship.Model
     {
         public static void ManualPlacement(Board board, Player player)
         {
-            while (player.Ships.Count <= 4)
+            while (player.Ships.Count < 2)
             {
                 int shipSize = 0;
                 Display.Clear();
-                Display.ShowBoard(board.ToString());
+                Display.ShowBoard(board.ToString(false));
                 Display.ShowText(MainMenu.ChooseShip);
                 switch (Input.GetInput())
                 {
@@ -50,7 +50,6 @@ namespace Battleship.Model
                             {
 
                                 ship.SquareList.Add(board.ocean[coordinates.Item1 - i, coordinates.Item2]);
-
                                 board.ocean[coordinates.Item1 - i, coordinates.Item2].SquareStatus = SquareStatus.Occupied;
                             }
                             player.Ships.Add(ship);
@@ -122,7 +121,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i - k, j].SquareStatus == SquareStatus.Empty && i - k > Board.Size) isEmpty = true;
+                    if (board.ocean[i - k, j].SquareStatus == SquareStatus.Empty && i - k > 0) isEmpty = true;
                     else return false;
                 }
             }
@@ -138,7 +137,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i + k, j].SquareStatus == SquareStatus.Empty) isEmpty = true;
+                    if (board.ocean[i + k, j].SquareStatus == SquareStatus.Empty && i + k < Board.Size) isEmpty = true;
                     else return false;
                 }
             }
@@ -146,7 +145,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i, j - k].SquareStatus == SquareStatus.Empty) isEmpty = true;
+                    if (board.ocean[i, j - k].SquareStatus == SquareStatus.Empty && j- k > 0) isEmpty = true;
                     else return false;
                 }
             }

@@ -25,9 +25,13 @@ namespace Battleship.View
             (int, int) option = (0, 0);
             chooseOption:
             string input = Console.ReadLine().ToUpper();
-            
+
+            if (input.Length < 2)
+            {
+                goto chooseOption;
+            }
             option.Item1 = input[0] - 65;
-            option.Item2 = int.Parse(input[1].ToString()) - 1;
+            option.Item2 = int.Parse(input.Substring(1, input.Length-1)) - 1;
             if (option.Item1 < size && option.Item2 < size) return option;
             goto chooseOption;
 
