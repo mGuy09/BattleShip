@@ -32,6 +32,7 @@ namespace Battleship.Model
                         Display.ShowText(Errors.invalidInput);
                         break;
                 }
+                Display.ShowText("Type the coordinates:");
                 (int, int) coordinates = Input.GetCoordinates(Board.Size);
 
 
@@ -118,7 +119,7 @@ namespace Battleship.Model
                 for (int k = 0; k < shipLength; k++)
                 {
                     if (board.ocean[i - k, j].SquareStatus == SquareStatus.Empty && i - k > Board.Size) isEmpty = true;
-                    else isEmpty = false;
+                    else return false;
                 }
             }
             else if (board.ocean[i, j].SquareStatus == SquareStatus.Empty && direction == 2)
@@ -126,7 +127,7 @@ namespace Battleship.Model
                 for (int k = 0; k < shipLength; k++)
                 {
                     if (board.ocean[i, j + k].SquareStatus == SquareStatus.Empty && j + k < Board.Size) isEmpty = true;
-                    else isEmpty = false;
+                    else return false;
                 }
             }
             else if (board.ocean[i, j].SquareStatus == SquareStatus.Empty && direction == 3)
@@ -134,7 +135,7 @@ namespace Battleship.Model
                 for (int k = 0; k < shipLength; k++)
                 {
                     if (board.ocean[i + k, j].SquareStatus == SquareStatus.Empty) isEmpty = true;
-                    else isEmpty = false;
+                    else return false;
                 }
             }
             else if(board.ocean[i, j].SquareStatus == SquareStatus.Empty && direction == 4)
@@ -142,7 +143,7 @@ namespace Battleship.Model
                 for (int k = 0; k < shipLength; k++)
                 {
                     if (board.ocean[i, j - k].SquareStatus == SquareStatus.Empty) isEmpty = true;
-                    else isEmpty = false;
+                    else return false;
                 }
             }
             return isEmpty;

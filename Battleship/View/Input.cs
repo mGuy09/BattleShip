@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Battleship.View
 {
@@ -28,8 +24,9 @@ namespace Battleship.View
         {
             (int, int) option = (0, 0);
             chooseOption:
-            string input = Console.ReadLine();
-            option.Item1 = int.Parse(input[0].ToString()) - 97;
+            string input = Console.ReadLine().ToUpper();
+            
+            option.Item1 = input[0] - 65;
             option.Item2 = int.Parse(input[1].ToString()) - 1;
             if (option.Item1 < size && option.Item2 < size) return option;
             goto chooseOption;
