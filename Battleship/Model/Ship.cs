@@ -4,6 +4,7 @@
     {
         
         public List<Square> SquareList;
+        public ShipType Name { get; set; }
     }
 }
 

@@ -2,7 +2,7 @@
 {
     public class Player
     {
-        public List<Ship> Ships;
+        public List<Ship> Ships = new List<Ship>(5);
         public bool IsAlive
         {
             get

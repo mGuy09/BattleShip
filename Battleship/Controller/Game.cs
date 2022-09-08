@@ -13,7 +13,6 @@ namespace Battleship.Controller
         public static Player player2 = new Player();
         public static Player currentPlayer = player2;
         public static AI ai = new AI();
-
         public void Start()
         {
         mainMenuLabel:
@@ -26,10 +25,12 @@ namespace Battleship.Controller
                 case 1:
                     Display.Clear();
                     PlacingPhase(player1);
-                   break;
+                    PlacingPhase(player2);
+                    break;
                 case 2:
                     Display.Clear();
-                    PlacingPhase(ai);
+                    PlacingPhase(player1);
+                    //PlacingPhase(ai);
                     break;
                 case 3:
                 settingslabel:
@@ -95,12 +96,11 @@ namespace Battleship.Controller
             }
         }
 
-        public void PlacingPhase(Player? player)
+        public void PlacingPhase(Player currentPlayer)
         {
             board1.CreateBoard();
             board2.CreateBoard();
             Display.ShowText(Messages.PlacingPhase);
-            currentPlayer = currentPlayer == player2 ? player1 : player2;
             Board currentBoard;
             if (currentPlayer == player1) currentBoard = board1;
             else currentBoard = board2;
