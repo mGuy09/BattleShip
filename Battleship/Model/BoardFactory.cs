@@ -7,7 +7,7 @@ namespace Battleship.Model
     {
         public static void ManualPlacement(Board board, Player player)
         {
-            while (player.Ships.Count < 5)
+            while (player.Ships.Count < 2)
             {
                 int shipSize = 0;
                 Display.Clear();
@@ -130,7 +130,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i, j + k].SquareStatus == SquareStatus.Empty && j + k < Board.Size) isEmpty = true;
+                    if (board.ocean[i, j == Board.Size-1?Board.Size-1:j + k].SquareStatus == SquareStatus.Empty && j + k < Board.Size) isEmpty = true;
                     else return false;
                 }
             }
@@ -138,7 +138,7 @@ namespace Battleship.Model
             {
                 for (int k = 0; k < shipLength; k++)
                 {
-                    if (board.ocean[i + k, j].SquareStatus == SquareStatus.Empty && i + k < Board.Size) isEmpty = true;
+                    if (board.ocean[i == Board.Size-1?Board.Size-1:i + k, j].SquareStatus == SquareStatus.Empty && i + k < Board.Size) isEmpty = true;
                     else return false;
                 }
             }
