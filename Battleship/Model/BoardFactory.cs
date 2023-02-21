@@ -8,7 +8,7 @@ namespace Battleship
     {
         public static void ManualPlacement(Board board, Player player)
         {
-            while (player.Ships.Count < 2)
+            while (player.Ships.Count < 4)
             {
                 int shipSize = 0;
                 Display.Clear();

@@ -26,3 +26,5 @@ namespace Battleship
         }
     }
 } 
+
+//To do - have to display the board after the last boat is placed for each player
