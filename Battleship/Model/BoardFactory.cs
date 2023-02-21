@@ -1,7 +1,8 @@
 ﻿using Battleship.Misc;
+using Battleship.Model;
 using Battleship.View;
 
-namespace Battleship.Model
+namespace Battleship
 {
     public class BoardFactory
     {

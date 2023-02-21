@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Model",
-    "\\View"
+    "\\Battleship",
+    "\\Battleship\\Controller",
+    "\\Battleship\\Model"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Battleship\\Controller\\Game.cs",
   "PreviewInSolutionExplorer": false
 }
