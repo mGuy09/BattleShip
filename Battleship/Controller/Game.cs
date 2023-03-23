@@ -122,7 +122,7 @@ namespace Battleship.Controller
                     break;
             }
             
-
+            
         }
 
         

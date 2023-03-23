@@ -59,5 +59,8 @@ namespace Battleship.Misc
 2. East
 3. South
 4. West";
+
+        public const string CheckBoard = @"Take one last look at your board";
     }
+    
 }
